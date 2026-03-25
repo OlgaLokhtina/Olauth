@@ -1,10 +1,11 @@
 from fastapi import APIRouter
-from typing import Dict
 
+from schemes.users import HealthCheckResponse
 
 user_rout = APIRouter(prefix="/api")
 
 
-@user_rout.get("/healthcheck/")
-def healthcheck() -> Dict:
-    return {"success": True}
+@user_rout.get("/healthcheck")
+def healthcheck() -> HealthCheckResponse:
+    h = HealthCheckResponse(success=True)
+    return h
